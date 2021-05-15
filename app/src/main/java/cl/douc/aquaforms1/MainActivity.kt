@@ -1,4 +1,4 @@
-package cl.douc.aquaforms1
+ package cl.douc.aquaforms1
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -26,10 +26,15 @@ class MainActivity : AppCompatActivity() {
             rvLista.adapter = adapter
 
             btnAgregar.setOnClickListener {
+
                 val msg = txtMensaje.text.toString()
-                val mensaje  = Mensaje(msg)
-                model.onAgregarClicked(mensaje)
-                txtMensaje.text.clear()
+                if (msg.isNotEmpty()) {
+                    val mensaje = Mensaje(msg)
+                    model.onAgregarClicked(mensaje)
+                    txtMensaje.text.clear()
+                } else {
+                    txtMensaje.error = "Debe ingresar un mensaje!!!"
+                }
             }
         }
 

@@ -15,6 +15,7 @@ class MensajeRepository(var  context: Context) {
     fun agregar(mensaje: Mensaje)
     {
 
+            //implementar los otros metodos del mensajeDao aca
         CoroutineScope(IO).launch {
             mDB.mensajeDao().agregar(mensaje)
         }

@@ -12,14 +12,14 @@ interface MensajeDao {
     suspend fun agregar(mensaje: Mensaje)
 
 
-    @Delete
+    @Delete                 //hay que implementar el suspend   en el update y delete
     fun eliminar(mensaje:Mensaje)
 
 
     @Update
     fun actualizar(mensaje: Mensaje)
 
-    @Query("select id, contenido from mensaje_table")
+    @Query("select id, contenido from mensaje_table order by contenido")
     fun listar():LiveData<List<Mensaje>>
 
     @Query("select id, contenido from mensaje_table where id = :id" )
